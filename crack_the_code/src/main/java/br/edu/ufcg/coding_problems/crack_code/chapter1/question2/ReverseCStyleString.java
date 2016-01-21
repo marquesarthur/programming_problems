@@ -32,5 +32,22 @@ public class ReverseCStyleString {
 		
 		return in;
 	}
+	
+	public static void main(String[] args) {
+		
+int r = 1;
+int l = 10;
+		int maxXor = Integer.MIN_VALUE;
+        for (int i = r; i <= r; i++) {
+            for (int j = i; j <= r; j++){
+                int newMax = i ^ j;
+                if (newMax > maxXor) {
+                    maxXor = newMax;
+                }
+            }
+        }
+		
+	}
 
+	
 }
