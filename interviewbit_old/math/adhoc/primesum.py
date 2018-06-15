@@ -15,8 +15,6 @@ class Solution:
  
         return []
  
- 
- 
     def primesLessThan(self, A):
         primes = [1] * (A + 1)
         primes[0] = 0
