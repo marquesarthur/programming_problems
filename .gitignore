@@ -2,7 +2,7 @@
 **/.idea/
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-
+**/*.pyc
 # Package Files #
 *.jar
 *.war
