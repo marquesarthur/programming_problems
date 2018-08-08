@@ -8,8 +8,7 @@ class Solution:
 
         while l < r:
             # Calculating the max area
-            area = max(area, min(A[l],
-                                 A[r]) * (r - l))
+            area = max(area, min(A[l], A[r]) * (r - l))
 
             if A[l] < A[r]:
                 l += 1
