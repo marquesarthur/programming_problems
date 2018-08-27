@@ -21,7 +21,6 @@ def __update_edge_distances(u, edges, dist, visited):
             dist[j] = dist[u] + e
 
 
-
 def djikstra(graph, source, target):
     inf = sys.maxsize
     dist = [inf] * graph.size
