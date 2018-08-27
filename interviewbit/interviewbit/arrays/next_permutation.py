@@ -26,7 +26,7 @@ class Solution:
 
         # iterate from n to 0
         # find 1st element greater than A[i], e.g.
-        #   for A[1] = 2, A[2] = 3 is greater 
+        #   for A[1] = 2, A[2] = 3 is greater
         #   for A[0] = 1, A[2] = 2 is greater
         j = len(A) - 1
         while j > i:
