@@ -1,3 +1,4 @@
+# https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
 class BTree(object):
 
     def __init__(self, value):
@@ -50,6 +51,22 @@ class BTree(object):
             max(left_diameter, right_diameter)
         )
 
+# Assumes binary tree rather than binary search tree
+def lca(root, n1, n2):
+    if root is None:
+        return None
+
+    if root.value == n1 or root.value == n2:
+        return root
+
+    left_lca = lca(root.left, n1, n2)
+    right_lca = lca(root.right, n1, n2)
+
+    if left_lca and right_lca:
+        return root
+
+    return left_lca if left_lca is not None else right_lca
+
 
 # After all insertions, we have:
 #
@@ -60,6 +77,7 @@ class BTree(object):
 #     2      5  7     11
 #   /   \
 # 1       4
+#
 #
 # height: 5
 # diameter: 6 (from node 5 to node 11)
@@ -73,6 +91,18 @@ tree.insert(1)
 tree.insert(4)
 tree.insert(5)
 
-# tree.in_order()
-print(tree.height())
-print(tree.diameter())
+
+
+print("""
+             6
+           /   \\
+         4       9
+       /   \\    / \\
+     2      5  7    11
+   /   \\
+ 1       4
+""")
+print("lca(tree, 1, 5) = %s" % lca(tree, 1, 5).value)
+print("lca(tree, 9, 11) = %s" %lca(tree, 9, 11).value)
+print("lca(tree, 1, 7) = %s" %lca(tree, 1, 7).value)
+print("lca(tree, 7, 9) = %s" %lca(tree, 7, 9).value)
