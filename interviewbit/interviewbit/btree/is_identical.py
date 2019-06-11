@@ -6,14 +6,16 @@ class Btree(object):
         self.left = None
 
     def add(self, value):
-        if value < self.value and not self.left:
-            self.left = Btree(value)
-        elif not self.right:
-            self.right = Btree(value)
-        elif value < self.value:
-            self.left.add(value)
+        if value < self.value:
+            if not self.left:
+                self.left = Btree(value)
+            else:
+                self.left.add(value)
         else:
-            self.right.add(value)
+            if not self.right:
+                self.right = Btree(value)
+            else:
+                self.right.add(value)
 
 
     def in_order(self):
