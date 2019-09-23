@@ -1,43 +1,41 @@
 
+import random
+
+def findMostToLeft(precedence_map, letters):
+    # pick a random key in the map
+    keys = set(precedence_map.values())
+    last_letter = letters.difference(keys)
+    last_letter = next(iter(last_letter))
+    return last_letter
 
 
-
-# Brute force approach!
 def findWord(rules):
     precedence_map = {}
-    inverse_precedence_map = {}
     letters = set()
     for r in rules:
         left, right = r.split(">")[0], r.split(">")[1]
         precedence_map[left] = right
-        if right not in precedence_map:
-            precedence_map[right] = precedence_map[left]
         letters.add(left)
         letters.add(right)
 
-    stack = list(letters)
+    letter = findMostToLeft(precedence_map, letters)
 
-    iterations = 0
+    result = []
+    while letter in precedence_map:
+        result.append(letter)
+        letter = precedence_map[letter]
 
-    while iterations <= 1000:
+    result.append(letter)
 
-        for letter, before in precedence_map.items():
 
-            if letter != before:
-                stack.pop(stack.index(letter))
-                stack.insert(stack.index(before), letter)
 
-        iterations += 1
+    return "".join(result)
 
-        # if letter in inverse_precedence_map:
-        #     recursive_insert_left(stack, letter, inverse_precedence_map[letter])
 
-    return "".join(stack)
 
 
 print(findWord(["P>E","E>R","R>U"])) # // PERU
 print(findWord(["I>N","A>I","P>A","S>P"])) # // SPAIN
-
 print(findWord(["U>N", "G>A", "R>Y", "H>U", "N>G", "A>R"])) # // HUNGARY
 print(findWord(["I>F", "W>I", "S>W", "F>T"])) # // SWIFT
 print(findWord(["W>I", "R>L", "T>Z", "Z>E", "S>W", "E>R", "L>A", "A>N", "N>D", "I>T"])) # // SWITZERLAND
