@@ -39,5 +39,9 @@ class Solution:
         return ret
 
 
-A = [ 90, 58, 69, 70, 82, 100, 13, 57, 47, 18 ]
+# A = [ 90, 58, 69, 70, 82, 100, 13, 57, 47, 18 ]
+# print(Solution().largestRectangleArea(A))
+
+
+A = [ 4, 3, 2 ]
 print(Solution().largestRectangleArea(A))

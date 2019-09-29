@@ -103,6 +103,6 @@ print("""
  1       4
 """)
 print("lca(tree, 1, 5) = %s" % lca(tree, 1, 5).value)
-print("lca(tree, 9, 11) = %s" %lca(tree, 9, 11).value)
-print("lca(tree, 1, 7) = %s" %lca(tree, 1, 7).value)
-print("lca(tree, 7, 9) = %s" %lca(tree, 7, 9).value)
+# print("lca(tree, 9, 11) = %s" %lca(tree, 9, 11).value)
+# print("lca(tree, 1, 7) = %s" %lca(tree, 1, 7).value)
+# print("lca(tree, 7, 9) = %s" %lca(tree, 7, 9).value)
