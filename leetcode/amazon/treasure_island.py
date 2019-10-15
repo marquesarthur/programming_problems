@@ -11,7 +11,6 @@ class Node():
 
 class Solution():
 
-
     def treasure(self, M):
         # Build adj list for coordinates
         from collections import defaultdict
@@ -53,23 +52,8 @@ class Solution():
         return steps
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# djikstra shortest path
+# create graph
+# run breadth first search
 
 
 input = [
