@@ -1,10 +1,10 @@
 import sys
 
-
-class Graph(object):
-    def __init__(self, n):
-        self.size = n
-        self.graph = [[0] * self.size] * self.size
+#
+# class Graph(object):
+#     def __init__(self, n):
+#         self.size = n
+#         self.graph = [[0] * self.size] * self.size
 
 
 def __min_distance_vertex(visited, dist):
@@ -36,7 +36,7 @@ def djikstra(graph, source, target):
     return dist[target]
 
 
-g = Graph(6)
+# g = Graph(6)
 # print(g.graph)
 g.graph = [
     [0, 9, 4, 0, 0, 0], # A
