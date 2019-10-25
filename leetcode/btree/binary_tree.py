@@ -1,7 +1,7 @@
 class BTree(object):
 
     def __init__(self, value):
-        self.value = value
+        self.val = value
         self.left = None
         self.right = None
 
@@ -9,7 +9,7 @@ class BTree(object):
         self.__insert_node(self, value)
 
     def __insert_node(self, current_node, value):
-        if current_node.value > value:
+        if current_node.val > value:
             if not current_node.left:
                 current_node.left = BTree(value)
             else:
@@ -24,7 +24,7 @@ class BTree(object):
         if self.left:
             self.left.in_order()
 
-        print(self.value)
+        print(self.val)
 
         if self.right:
             self.right.in_order()
