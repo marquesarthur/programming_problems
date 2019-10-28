@@ -1,7 +1,8 @@
+# Definition for a binary tree node.
 class BTree(object):
 
     def __init__(self, value):
-        self.value = value
+        self.val = value
         self.left = None
         self.right = None
 
@@ -9,7 +10,7 @@ class BTree(object):
         self.__insert_node(self, value)
 
     def __insert_node(self, current_node, value):
-        if current_node.value > value:
+        if current_node.val > value:
             if not current_node.left:
                 current_node.left = BTree(value)
             else:
@@ -20,92 +21,48 @@ class BTree(object):
             else:
                 current_node.right.insert(value)
 
-    def __str__(self):
-        return str(self.value)
-
-# After all insertions, we have:
-#
-#             6
-#           /   \
-#         4       9
-#       /   \    /   \
-#     2      5  7     11
-#   /   \
-# 1       4
-#
-# height: 5
-# diameter: 6 (from node 5 to node 11)
-
-
-
-class BTreeIterator(object):
+class BSTIterator(object):
 
     def __init__(self, root):
+        """
+        :type root: TreeNode
+        """
+
         self.stack = []
-        self.idx = 0
-
-        self._rightmost_inorder(root)
-
-
-    def _rightmost_inorder(self, root):
-
-
-        if root:
-            next = root.left
-            root.left = None
-
-            self._rightmost_inorder(next)
-
-            self.stack.append(root)
-
-
-
-
-
-
-
-
-
-
-
+        self.__visit(root)
 
 
     def next(self):
         """
         @return the next smallest number
+        :rtype: int
         """
+        result = self.stack.pop()
+        if result.right:
+            self.__visit(result.right)
 
-        # Node at the top of the stack is the next smallest element
-
-
-        while self.stack and (self.stack[-1].left or self.stack[-1].right):
-            topmost_node = self.stack.pop(0)
-
-            topmost_node = topmost_node.right
-            aux = []
-            # while topmost_node:
-            #     next = topmost_node.left
-            #     topmost_node.left = None
-            #
-            #     self._rightmost_inorder(next)
-            #
-            #     aux.append(topmost_node)
-            #
-            #
-            # self._rightmost_inorder(topmost_node)
+        return result.val
 
 
-        if self.stack:
-            return self.stack.pop().value
-
-        return None
-
+    def __visit(self, current):
+        while current:
+            self.stack.append(current)
+            current = current.left
 
     def hasNext(self):
-        """
-        @return whether we have a next smallest number
-        """
-        return len(self.stack) > 0
+        return self.stack and len(self.stack) > 0
+
+
+
+
+
+
+# Your BSTIterator object will be instantiated and called as such:
+# obj = BSTIterator(root)
+# param_1 = obj.next()
+# param_2 = obj.hasNext()
+
+
 
 tree = BTree(6)
 tree.insert(4)
@@ -116,6 +73,14 @@ tree.insert(5)
 
 
 
-it = BTreeIterator(tree)
+#        6
+#      /   \
+#     4     9
+#    / \   /
+#   2   5 7
+
+
+
+it = BSTIterator(tree)
 while it.hasNext():
     print(it.next())
