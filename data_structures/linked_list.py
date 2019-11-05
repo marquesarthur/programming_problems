@@ -57,3 +57,28 @@ print(x.reverse())
 
 
 
+class Solution:
+    def removeNthFromEnd(self, head, n):
+        """
+        :type head: ListNode
+        :type n: int
+        :rtype: ListNode
+        """
+
+        dummy = LinkedList("dummy")
+        dummy.next = head
+
+        slow = dummy
+        fast = dummy
+
+        i = 0
+        while fast.next is not None:
+            fast = fast.next
+            i += 1
+            if i > n:
+                slow = slow.next
+
+
+        if n <= i:
+            slow.next = slow.next.next
+        return dummy.next
