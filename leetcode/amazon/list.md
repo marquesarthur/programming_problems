@@ -10,7 +10,7 @@
 * Optimizing Box Weight
 * Transaction Logs
 * Partition Labels
-* Top K Frequent Words
+* ~~Top K Frequent Words~~
 * ~~Nearest City~~
 * Two Sum
 * Unique Pairs
